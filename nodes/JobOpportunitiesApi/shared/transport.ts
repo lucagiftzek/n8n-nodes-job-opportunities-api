@@ -85,7 +85,7 @@ export function buildApiError(
 	switch (statusCode) {
 		case 401:
 			message = 'Invalid API key';
-			description = `Check the API key in your Job Opportunities API credential. You can get a free key (no card required) at https://jobopportunitiesapi.org/signup.${suffix}`;
+			description = `Check the API key in your Job Opportunities API credential. You can get a free key (no card required) at https://jobopportunitiesapi.org/register.${suffix}`;
 			failure = { cause: 'credential-invalid' };
 			break;
 		case 403:

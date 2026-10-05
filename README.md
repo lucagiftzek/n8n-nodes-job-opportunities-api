@@ -32,7 +32,7 @@ For self-hosted n8n without the UI installer, run `npm install n8n-nodes-job-opp
 
 ## Credentials
 
-You need a JOA API key. Get a free key (no card required) at [jobopportunitiesapi.org/signup](https://jobopportunitiesapi.org/signup).
+You need a JOA API key. Get a free key (no card required) at [jobopportunitiesapi.org/register](https://jobopportunitiesapi.org/register).
 
 1. In n8n, create a new credential of type **Job Opportunities API**.
 2. Paste your key into **API Key**.

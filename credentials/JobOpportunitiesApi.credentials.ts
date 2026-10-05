@@ -24,7 +24,7 @@ export class JobOpportunitiesApi implements ICredentialType {
 			required: true,
 			default: '',
 			description:
-				'Your Job Opportunities API (JOA) key. Get a free key (no card required) at https://jobopportunitiesapi.org/signup.',
+				'Your Job Opportunities API (JOA) key. Get a free key (no card required) at https://jobopportunitiesapi.org/register.',
 		},
 		{
 			displayName: 'Base URL',

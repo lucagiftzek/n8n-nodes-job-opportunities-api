@@ -39,7 +39,7 @@ describe('buildApiError', () => {
 		expect(error).toBeInstanceOf(NodeApiError);
 		expect(error.message).toBe('Invalid API key');
 		expect(error.httpCode).toBe('401');
-		expect(error.description).toContain('jobopportunitiesapi.org/signup');
+		expect(error.description).toContain('jobopportunitiesapi.org/register');
 	});
 
 	it('maps 403 to the plan message', () => {
