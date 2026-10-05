@@ -1,0 +1,91 @@
+{
+  "name": "Search remote jobs in Germany, then get the first job (Job Opportunities API)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7a2b3c4d-0002-4a5b-9c8d-000000000001",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "operation": "search",
+        "country": "DE",
+        "remote": [
+          "remote"
+        ],
+        "limit": 5
+      },
+      "id": "7a2b3c4d-0002-4a5b-9c8d-000000000002",
+      "name": "Search jobs",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "",
+          "name": "Job Opportunities API account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "operation": "get",
+        "jobId": "={{ $('Search jobs').first().json.id }}"
+      },
+      "id": "7a2b3c4d-0002-4a5b-9c8d-000000000003",
+      "name": "Get first job",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "",
+          "name": "Job Opportunities API account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Search jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search jobs": {
+      "main": [
+        [
+          {
+            "node": "Get first job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

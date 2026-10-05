@@ -1,0 +1,68 @@
+{
+  "name": "n8n-nodes-job-opportunities-api",
+  "version": "0.1.0",
+  "description": "n8n community node for the Job Opportunities API (JOA): search employer-direct job postings and companies, and trigger workflows on new, changed or closed jobs.",
+  "license": "MIT",
+  "homepage": "https://jobopportunitiesapi.org/integrations/n8n",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "job-opportunities-api",
+    "joa",
+    "jobs",
+    "job-postings",
+    "recruiting",
+    "ats",
+    "careers"
+  ],
+  "author": {
+    "name": "Loukas Tzekos",
+    "email": "support@jobopportunitiesapi.org",
+    "url": "https://jobopportunitiesapi.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucagiftzek/n8n-nodes-job-opportunities-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucagiftzek/n8n-nodes-job-opportunities-api/issues",
+    "email": "support@jobopportunitiesapi.org"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "vitest run",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist",
+    "!dist/tsconfig.tsbuildinfo"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/JobOpportunitiesApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/JobOpportunitiesApi/JobOpportunitiesApi.node.js",
+      "dist/nodes/JobOpportunitiesApiTrigger/JobOpportunitiesApiTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.50.5",
+    "eslint": "9.32.0",
+    "n8n-workflow": "^2.41.2",
+    "prettier": "3.6.2",
+    "release-it": "^21.1.0",
+    "typescript": "5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

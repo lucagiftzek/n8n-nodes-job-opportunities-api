@@ -1,0 +1,165 @@
+{
+  "name": "New remote jobs in Germany to Google Sheets (Job Opportunities API)",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "event": "newJob",
+        "country": "DE",
+        "remote": [
+          "remote"
+        ],
+        "maxJobs": 20,
+        "options": {
+          "overlapMinutes": 60
+        }
+      },
+      "id": "6f1c2d3e-0001-4a5b-9c8d-000000000001",
+      "name": "New remote jobs in Germany",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApiTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "",
+          "name": "Job Opportunities API account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "Title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "Company",
+              "value": "={{ $json.company }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "Location",
+              "value": "={{ $json.location }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "Employment Type",
+              "value": "={{ $json.employment_type ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "a5",
+              "name": "Posted At",
+              "value": "={{ $json.posted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a6",
+              "name": "Apply URL",
+              "value": "={{ $json.apply_url }}",
+              "type": "string"
+            },
+            {
+              "id": "a7",
+              "name": "Attribution",
+              "value": "={{ $json.attribution ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "a8",
+              "name": "Job ID",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6f1c2d3e-0001-4a5b-9c8d-000000000002",
+      "name": "Pick columns",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Jobs"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "6f1c2d3e-0001-4a5b-9c8d-000000000003",
+      "name": "Append to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        440,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "New remote jobs in Germany": {
+      "main": [
+        [
+          {
+            "node": "Pick columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick columns": {
+      "main": [
+        [
+          {
+            "node": "Append to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {}
+}

@@ -1,0 +1,6 @@
+dist
+node_modules
+.work
+*.tgz
+coverage
+REPORT.md
