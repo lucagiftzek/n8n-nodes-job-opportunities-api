@@ -4,3 +4,4 @@ node_modules
 *.tgz
 coverage
 REPORT.md
+dev/n8n-docker/nodes

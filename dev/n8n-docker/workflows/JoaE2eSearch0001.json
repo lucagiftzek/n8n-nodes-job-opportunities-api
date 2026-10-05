@@ -1,0 +1,93 @@
+{
+  "id": "JoaE2eSearch0001",
+  "name": "JOA e2e: search DE remote then get first",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e2e-1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "operation": "search",
+        "country": "DE",
+        "remote": [
+          "remote"
+        ],
+        "limit": 5
+      },
+      "id": "e2e-2",
+      "name": "JOA Search",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "operation": "get",
+        "jobId": "={{ $('JOA Search').first().json.id }}"
+      },
+      "id": "e2e-3",
+      "name": "JOA Get",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "JOA Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JOA Search": {
+      "main": [
+        [
+          {
+            "node": "JOA Get",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

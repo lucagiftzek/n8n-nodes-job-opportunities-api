@@ -1,0 +1,38 @@
+{
+  "id": "JoaE2eTrigChg001",
+  "name": "JOA e2e: trigger change feed sample",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "event": "jobChange"
+      },
+      "id": "t-1",
+      "name": "JOA Trigger",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApiTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      }
+    }
+  ],
+  "connections": {}
+}

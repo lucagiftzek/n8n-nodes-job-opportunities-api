@@ -40,7 +40,9 @@
   },
   "files": [
     "dist",
-    "!dist/tsconfig.tsbuildinfo"
+    "!dist/tsconfig.tsbuildinfo",
+    "!dist/screenshots",
+    "!dist/dev"
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,

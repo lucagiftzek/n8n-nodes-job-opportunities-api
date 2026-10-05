@@ -1,0 +1,156 @@
+{
+  "id": "JoaE2eAccount001",
+  "name": "JOA e2e: account + company",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a-1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "account",
+        "operation": "getPlan"
+      },
+      "id": "a-2",
+      "name": "JOA Account",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "search",
+        "query": "lumiform",
+        "limit": 2
+      },
+      "id": "a-3",
+      "name": "JOA Company Search",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      },
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "get",
+        "companySlug": "={{ $json.slug }}"
+      },
+      "id": "a-4",
+      "name": "JOA Company Get",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        660,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      },
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "operation": "get",
+        "jobId": "does-not-exist-e2e"
+      },
+      "id": "a-5",
+      "name": "JOA Get Missing",
+      "type": "n8n-nodes-job-opportunities-api.jobOpportunitiesApi",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "jobOpportunitiesApi": {
+          "id": "JoaE2eCred000001",
+          "name": "JOA e2e"
+        }
+      },
+      "executeOnce": true,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "JOA Account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JOA Account": {
+      "main": [
+        [
+          {
+            "node": "JOA Company Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JOA Company Search": {
+      "main": [
+        [
+          {
+            "node": "JOA Company Get",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JOA Company Get": {
+      "main": [
+        [
+          {
+            "node": "JOA Get Missing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

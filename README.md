@@ -11,6 +11,7 @@ The Job Opportunities API (JOA) collects job postings directly from employers' o
 - [Operations](#operations)
 - [Trigger](#trigger)
 - [Example workflows](#example-workflows)
+- [Screenshots](#screenshots)
 - [Compatibility](#compatibility)
 - [Usage notes](#usage-notes)
 - [Resources](#resources)
@@ -96,10 +97,18 @@ The [`examples`](./examples) folder has workflows you can import into n8n (**Wor
 
 After importing, select your **Job Opportunities API** credential in each JOA node (and your Google credential and sheet in the Google Sheets node).
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Search and Get in a workflow](https://raw.githubusercontent.com/lucagiftzek/n8n-nodes-job-opportunities-api/main/screenshots/workflow-canvas.png) | ![Node actions in the nodes panel](https://raw.githubusercontent.com/lucagiftzek/n8n-nodes-job-opportunities-api/main/screenshots/node-actions.png) |
+| ![Trigger with Fetch Test Event sample data](https://raw.githubusercontent.com/lucagiftzek/n8n-nodes-job-opportunities-api/main/screenshots/trigger-new-jobs.png) | ![Job Search parameters and output](https://raw.githubusercontent.com/lucagiftzek/n8n-nodes-job-opportunities-api/main/screenshots/node-search.png) |
+
 ## Compatibility
 
 - Built with the official `@n8n/node-cli` tooling and n8n Nodes API version 1.
-- Tested with n8n 2.x (Docker image `n8nio/n8n:latest`, October 2026) on Node.js 24.
+- Tested with n8n 2.41.7 (Docker image `n8nio/n8n:latest`, October 2026).
+- Requires an n8n version that supports community nodes (self-hosted, or n8n Cloud once the node is verified).
 - No runtime dependencies.
 
 ## Usage notes
