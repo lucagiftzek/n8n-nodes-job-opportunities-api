@@ -14,6 +14,7 @@ The Job Opportunities API (JOA) collects job postings directly from employers' o
 - [Screenshots](#screenshots)
 - [Compatibility](#compatibility)
 - [Usage notes](#usage-notes)
+- [Showing listings publicly](#showing-listings-publicly)
 - [Resources](#resources)
 - [License](#license)
 - [Changelog](#changelog)
@@ -95,7 +96,7 @@ The [`examples`](./examples) folder has workflows you can import into n8n (**Wor
 - [`new-remote-jobs-germany-to-google-sheets.json`](./examples/new-remote-jobs-germany-to-google-sheets.json): every hour, new remote jobs in Germany are appended to a Google Sheet (Job Opportunities API Trigger, Edit Fields, Google Sheets).
 - [`search-then-get-job.json`](./examples/search-then-get-job.json): a manual workflow that searches remote jobs in Germany and then fetches the full posting of the first result.
 
-After importing, select your **Job Opportunities API** credential in each JOA node (and your Google credential and sheet in the Google Sheets node).
+After importing, select your **Job Opportunities API** credential in each JOA node (and your Google credential and sheet in the Google Sheets node). If you display the listings publicly, the Job Opportunities API terms ask for a visible credit, "Data: Job Opportunities API", linking to https://jobopportunitiesapi.org.
 
 ## Screenshots
 
