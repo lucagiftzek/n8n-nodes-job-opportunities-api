@@ -119,6 +119,10 @@ After importing, select your **Job Opportunities API** credential in each JOA no
 - Job descriptions are plain text and only included when **Include Description** is on (or with Job > Get).
 - Page sizes follow your key's limits. The node follows the API cursor until it reaches your Limit.
 
+## Showing listings publicly
+
+If you display the listings publicly, the Job Opportunities API terms ask for a visible credit, "Data: Job Opportunities API", linking to https://jobopportunitiesapi.org.
+
 ## Resources
 
 - [Job Opportunities API](https://jobopportunitiesapi.org)
